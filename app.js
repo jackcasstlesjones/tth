@@ -40,15 +40,13 @@ if (typeof document !== 'undefined') {
   $('cheatsheet-sub').textContent =
     `${fmt(CHEATSHEET_START)} – ${fmt(CHEATSHEET_END)} before CT, in ${fmt(CHEATSHEET_STEP)} steps.`;
 
-  // Cheatsheet rows are built once; only the highlight changes.
-  const cheatsheetRows = [];
-  for (let amount = CHEATSHEET_START; amount <= CHEATSHEET_END; amount += CHEATSHEET_STEP) {
+  // Cheatsheet is static, so it's built once.
+  for (let amount = CHEATSHEET_START, i = 0; amount <= CHEATSHEET_END; amount += CHEATSHEET_STEP, i++) {
     const r = calculate(amount, 'before');
     const tr = document.createElement('tr');
-    tr.style.setProperty('--i', cheatsheetRows.length);
+    tr.style.setProperty('--i', i);
     tr.innerHTML = `<td>${fmt(amount)}</td><td>${fmt(r.pot)}</td><td>${fmt(r.takeHome)}</td>`;
     $('cheatsheet-body').append(tr);
-    cheatsheetRows.push({ amount, tr });
   }
 
   // Count-up animation for the headline figure.
@@ -78,13 +76,6 @@ if (typeof document !== 'undefined') {
     frame = requestAnimationFrame(tick);
   }
 
-  function highlightNearest(amount) {
-    const idx = Number.isFinite(amount)
-      ? Math.round((Math.min(Math.max(amount, CHEATSHEET_START), CHEATSHEET_END) - CHEATSHEET_START) / CHEATSHEET_STEP)
-      : -1;
-    cheatsheetRows.forEach(({ tr }, i) => tr.classList.toggle('is-active', i === idx));
-  }
-
   function render() {
     const mode = document.querySelector('input[name="mode"]:checked').value;
     const amount = amountInput.value === '' ? NaN : Number(amountInput.value);
@@ -109,8 +100,6 @@ if (typeof document !== 'undefined') {
       $('warning-text').textContent =
         `A pot of ${fmt(r.pot)} doesn't cover both salaries (${fmt(MIN_POT)} needed), so there's no dividend to pay.`;
     }
-
-    highlightNearest(mode === 'before' && valid ? amount : NaN);
   }
 
   amountInput.addEventListener('input', render);

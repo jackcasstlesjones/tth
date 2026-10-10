@@ -442,24 +442,11 @@ tbody tr {
   transition: background 0.35s var(--ease), color 0.35s var(--ease);
 }
 tbody tr + tr td { border-top: 1px solid rgba(255, 255, 255, 0.045); }
-tbody tr:hover { background: rgba(255, 255, 255, 0.035); }
 tbody td:nth-child(2) { color: var(--muted); }
 tbody td:last-child { font-weight: 600; }
 @keyframes row-in {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: none; }
-}
-
-tbody tr.is-active {
-  background: linear-gradient(90deg, rgba(139, 92, 246, 0.28), rgba(99, 102, 241, 0.12) 60%, rgba(34, 211, 238, 0.12));
-}
-tbody tr.is-active td { border-top-color: transparent; }
-tbody tr.is-active + tr td { border-top-color: transparent; }
-tbody tr.is-active td:first-child { box-shadow: inset 3px 0 0 #a78bfa; }
-tbody tr.is-active td:nth-child(2) { color: #e9e5ff; }
-tbody tr.is-active td:last-child {
-  color: #fff;
-  text-shadow: 0 0 18px rgba(167, 139, 250, 0.8);
 }
 
 .foot {
