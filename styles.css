@@ -312,17 +312,18 @@ h1 {
   letter-spacing: -0.04em;
   line-height: 1.05;
   font-variant-numeric: tabular-nums;
-  background: linear-gradient(110deg, #fff 0%, #ddd6fe 35%, #67e8f9 60%, #fff 85%);
-  background-size: 250% 100%;
+  background: linear-gradient(90deg, #c4b5fd 0%, #a5b4fc 25%, #67e8f9 50%, #a5b4fc 75%, #c4b5fd 100%);
+  background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shimmer 8s linear infinite;
+  animation: shimmer 6s linear infinite;
   word-break: break-word;
 }
 body[data-mode="after"] .headline-value { filter: drop-shadow(0 6px 28px rgba(139, 92, 246, 0.35)); }
 body[data-mode="before"] .headline-value { filter: drop-shadow(0 6px 28px rgba(34, 211, 238, 0.3)); }
-@keyframes shimmer { to { background-position: -250% 0; } }
+/* Shifting by exactly one tile width (200% of a 200%-wide repeating gradient) makes the loop seamless. */
+@keyframes shimmer { from { background-position: 0% 0; } to { background-position: -200% 0; } }
 
 /* Collapsible rows (CT reserve, warning) */
 .collapse {
