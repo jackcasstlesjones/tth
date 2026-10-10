@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07070d">
+  <title>tth · Take-home calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="orb orb-c"></div>
+    <div class="grid-lines"></div>
+    <div class="noise"></div>
+  </div>
+
+  <main class="shell">
+    <header class="hero">
+      <span class="badge"><span class="badge-dot"></span>tth · Two-director Ltd</span>
+      <h1>Take-home calculator</h1>
+      <p class="lede">Salary plus dividends, worked out per director.</p>
+    </header>
+
+    <section class="card calc" aria-label="Calculator">
+      <div class="inputs">
+        <label class="label" for="amount">Amount</label>
+        <div class="field">
+          <span class="field-prefix">£</span>
+          <input id="amount" type="number" inputmode="decimal" step="any" min="0"
+                 placeholder="0.00" value="10000" autocomplete="off">
+        </div>
+
+        <fieldset class="segmented">
+          <legend class="sr-only">Amount is</legend>
+          <span class="segmented-pill" aria-hidden="true"></span>
+          <input type="radio" name="mode" id="mode-before" value="before" checked>
+          <label for="mode-before">Before CT</label>
+          <input type="radio" name="mode" id="mode-after" value="after">
+          <label for="mode-after">After CT</label>
+        </fieldset>
+
+        <p class="hint" id="mode-hint"></p>
+      </div>
+
+      <div class="results">
+        <div class="headline">
+          <span class="eyebrow">Take-home per director</span>
+          <output id="take-home" class="headline-value" for="amount" aria-live="polite">—</output>
+        </div>
+
+        <div class="collapse" id="warning-wrap">
+          <div class="collapse-inner">
+            <div class="warning" role="alert">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.7 3.86a2 2 0 0 0-3.4 0Z"/></svg>
+              <span id="warning-text"></span>
+            </div>
+          </div>
+        </div>
+
+        <dl class="breakdown">
+          <div class="collapse" id="ct-wrap">
+            <div class="collapse-inner">
+              <div class="line"><dt>CT reserve</dt><dd id="ct-reserve">—</dd></div>
+            </div>
+          </div>
+          <div class="line"><dt>Distributable pot</dt><dd id="pot">—</dd></div>
+          <div class="line"><dt>Salary</dt><dd id="salary">—</dd></div>
+          <div class="line"><dt>Gross dividend</dt><dd id="gross-dividend">—</dd></div>
+          <div class="line"><dt id="tax-label">Dividend tax</dt><dd id="dividend-tax">—</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="card cheatsheet" aria-labelledby="cheatsheet-title">
+      <div class="cheatsheet-head">
+        <h2 id="cheatsheet-title">Cheatsheet</h2>
+        <p id="cheatsheet-sub"></p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Before CT</th>
+              <th scope="col">After CT</th>
+              <th scope="col">Take-home <span class="th-sub">per director</span></th>
+            </tr>
+          </thead>
+          <tbody id="cheatsheet-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer class="foot">Figures are estimates. The £500 dividend allowance is not applied.</footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
