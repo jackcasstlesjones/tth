@@ -284,7 +284,7 @@ h1 {
     0 8px 24px -6px rgba(139, 92, 246, 0.7);
   transition: transform 0.45s var(--ease), background 0.45s var(--ease);
 }
-.segmented:has(#mode-after:checked) .segmented-pill {
+.segmented:has(#mode-before:checked) .segmented-pill {
   transform: translateX(100%);
   background: linear-gradient(135deg, #0ea5e9, var(--cyan));
   box-shadow:
@@ -320,8 +320,8 @@ h1 {
   animation: shimmer 8s linear infinite;
   word-break: break-word;
 }
-body[data-mode="before"] .headline-value { filter: drop-shadow(0 6px 28px rgba(139, 92, 246, 0.35)); }
-body[data-mode="after"] .headline-value { filter: drop-shadow(0 6px 28px rgba(34, 211, 238, 0.3)); }
+body[data-mode="after"] .headline-value { filter: drop-shadow(0 6px 28px rgba(139, 92, 246, 0.35)); }
+body[data-mode="before"] .headline-value { filter: drop-shadow(0 6px 28px rgba(34, 211, 238, 0.3)); }
 @keyframes shimmer { to { background-position: -250% 0; } }
 
 /* Collapsible rows (CT reserve, warning) */
