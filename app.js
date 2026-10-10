@@ -17,8 +17,9 @@ function calculate(amount, mode) {
 
   const grossDividend = (pot - MIN_POT) / DIRECTORS;
   const dividendTax = grossDividend * DIVIDEND_TAX_RATE;
-  const takeHome = SALARY + grossDividend - dividendTax;
-  return { ctReserve, pot, shortfall: false, grossDividend, dividendTax, takeHome };
+  const paidIn = SALARY + grossDividend; // dividend tax is settled later via Self Assessment
+  const takeHome = paidIn - dividendTax;
+  return { ctReserve, pot, shortfall: false, grossDividend, paidIn, dividendTax, takeHome };
 }
 
 if (typeof module !== 'undefined') module.exports = { calculate };
@@ -92,6 +93,7 @@ if (typeof document !== 'undefined') {
     $('pot').textContent = valid ? fmt(r.pot) : '—';
     $('salary').textContent = fmt(SALARY);
     $('gross-dividend').textContent = fmt(r.grossDividend);
+    $('paid-in').textContent = fmt(r.paidIn);
     $('dividend-tax').textContent = fmt(r.dividendTax);
     setHeadline(r.takeHome);
 

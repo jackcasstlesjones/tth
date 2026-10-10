@@ -392,6 +392,9 @@ body[data-mode="after"] .headline-value { filter: drop-shadow(0 6px 28px rgba(34
   font-variant-numeric: tabular-nums;
   text-align: right;
 }
+.line-strong dt { color: var(--text); font-weight: 550; }
+.line-strong dd { font-weight: 650; color: #fff; }
+.dt-sub { display: block; font-size: 12px; font-weight: 400; color: var(--faint); }
 
 /* ---------- Cheatsheet ---------- */
 .cheatsheet { padding: clamp(22px, 4vw, 32px); }
