@@ -91,7 +91,7 @@ body {
   position: absolute;
   inset: -50%;
   background-image: var(--noise);
-  opacity: 0.09;
+  opacity: 0.22;
   mix-blend-mode: overlay;
   animation: grain 1.2s steps(6) infinite;
 }
@@ -186,7 +186,7 @@ h1 {
   inset: 0;
   border-radius: inherit;
   background-image: var(--noise);
-  opacity: 0.05;
+  opacity: 0.14;
   mix-blend-mode: overlay;
   pointer-events: none;
 }
