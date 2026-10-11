@@ -109,6 +109,7 @@ body {
   margin-inline: auto;
   padding: clamp(40px, 8vw, 88px) 0 48px;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 20px;
 }
 
@@ -178,7 +179,7 @@ h1 {
 /* ---------- Calculator ---------- */
 .calc {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
 }
 @media (min-width: 760px) {
   .calc { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
@@ -375,7 +376,7 @@ body[data-mode="before"] .headline-value { filter: drop-shadow(0 6px 28px rgba(3
 .dt-sub { display: block; font-size: 12px; font-weight: 400; color: var(--faint); }
 
 /* ---------- Cheatsheet ---------- */
-.cheatsheet { padding: clamp(22px, 4vw, 32px); }
+.cheatsheet { padding: clamp(16px, 4vw, 32px); }
 .cheatsheet-head { position: relative; z-index: 1; margin-bottom: 16px; }
 .cheatsheet h2 {
   margin: 0;
@@ -399,7 +400,8 @@ table {
   font-variant-numeric: tabular-nums;
   font-size: 14.5px;
 }
-th, td { padding: 11px 16px; text-align: right; white-space: nowrap; }
+th, td { padding: 11px clamp(10px, 3vw, 16px); text-align: right; }
+td { white-space: nowrap; }
 th:first-child, td:first-child { text-align: left; }
 thead th {
   position: sticky;
